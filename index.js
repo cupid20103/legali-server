@@ -15,7 +15,7 @@ var corsOption = {
   methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
   url: [
     "http://localhost:5173",
-    "https://website-aggregator-client.vercel.app/",
+    "https://website-aggregator-client.vercel.app",
   ],
 };
 app.use(cors(corsOption));
