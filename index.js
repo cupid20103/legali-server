@@ -9,15 +9,16 @@ import dalleRoutes from "./routes/dalleRoutes.js";
 dotenv.config({ path: "./.env.local" });
 
 const app = express();
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin) return callback(null, true);
 
-      return callback(null, true);
-    },
-  })
-);
+var corsOption = {
+  origin: `*`,
+  methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+  url: [
+    "http://localhost:5173",
+    "https://website-aggregator-client.vercel.app/",
+  ],
+};
+app.use(cors(corsOption));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
