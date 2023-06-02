@@ -10,15 +10,15 @@ dotenv.config({ path: "./.env.local" });
 
 const app = express();
 
-var corsOption = {
-  origin: `*`,
-  methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
-  url: [
-    "http://localhost:5173",
-    "https://website-aggregator-client.vercel.app",
-  ],
-};
-app.use(cors(corsOption));
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+
+      return callback(null, true);
+    },
+  })
+);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
