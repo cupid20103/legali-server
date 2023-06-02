@@ -9,7 +9,15 @@ import dalleRoutes from "./routes/dalleRoutes.js";
 dotenv.config({ path: "./.env.local" });
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+
+      return callback(null, true);
+    },
+  })
+);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
